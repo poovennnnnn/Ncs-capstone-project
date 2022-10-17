@@ -1,0 +1,77 @@
+<!-- <div class="container mt-5">
+  <div class="card text-center" style="color: green; padding: 20px">
+    <h1>You are Admin</h1>
+  </div>
+</div>
+<h2>hello {{ str }}</h2>
+<button (click)="handleClick()">For admin</button> -->
+
+<div class="continer p-2 mt-2">
+  <div class="row">
+    <div class="col-3 col-sm-12 col-md-3 align-middle">
+      <!-- <div class="list-group" id="list-tab" role="tablist">
+        <a
+          class="list-group-item list-group-item-action"
+          [ngClass]="{ active: active == 'create' }"
+          role="tab"
+          aria-controls="home"
+          (click)="createCustomer()"
+          >Create Account</a
+        >
+
+        <a
+          class="list-group-item list-group-item-action"
+          [ngClass]="{ active: active == 'show' }"
+          id="list-profile-list"
+          data-toggle="list"
+          role="tab"
+          aria-controls="profile"
+          (click)="showAllCustomer()"
+          >Show All Customer</a
+        >
+        <a
+          class="list-group-item list-group-item-action"
+          [ngClass]="{ active: active == 'search' }"
+          id="list-messages-list"
+          data-toggle="list"
+          role="tab"
+          aria-controls="messages"
+          (click)="searchCustomer()"
+          >Search Customer</a
+        >
+      </div> -->
+      <button
+        class="btn btn-outline-secondary mt-2 w-100"
+        [ngClass]="{ active: active == 'create' }"
+        (click)="createCustomer()"
+      >
+        Create Account
+      </button>
+      <button
+        [ngClass]="{ active: active == 'show' }"
+        class="btn btn-outline-secondary mt-2 w-100"
+        (click)="showAllCustomer()"
+      >
+        Show all Accout
+      </button>
+      <button
+        [ngClass]="{ active: active == 'search' }"
+        class="btn btn-outline-secondary mt-2 w-100"
+        (click)="searchCustomer()"
+      >
+        Search Account
+      </button>
+    </div>
+    <div class="col-9 col-sm-12 col-md-9">
+      <div class="tab-content" id="nav-tabContent">
+        <div *ngIf="active == 'create'">
+          <app-create-account></app-create-account>
+        </div>
+        <div *ngIf="active == 'show'">
+          <app-customer></app-customer>
+        </div>
+        <div *ngIf="active == 'search'">search</div>
+      </div>
+    </div>
+  </div>
+</div>

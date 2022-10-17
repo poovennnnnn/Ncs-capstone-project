@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-12">
+      <div class="card m-2">
+        <h1 class="h1 text-center mt-2">Create Bank Account</h1>
+        <form
+          class="card-body cardbody-color shadow"
+          #f="ngForm"
+          (ngSubmit)="f.form.valid && createAccount(f)"
+          novalidate
+        >
+          <div class="mb-3">
+            <input
+              type="text"
+              ngModel
+              name="customerName"
+              id="customerName"
+              placeholder="customerName"
+              class="form-control"
+              required
+              #customerName="ngModel"
+            />
+            <div
+              class="alert alert-danger mt-2"
+              role="alert"
+              *ngIf="customerName.errors && f.submitted"
+            >
+              customerName is required!
+            </div>
+          </div>
+
+          <select
+            ngModel
+            class="form-select mb-3"
+            aria-label="Default select example"
+            name="accountType"
+          >
+            <option value="" disabled selected>Account Type</option>
+            <option value="Savings">Savings</option>
+            <option value="Current">Current</option>
+          </select>
+
+          <div class="mb-3">
+            <input
+              type="number"
+              ngModel
+              name="intialAmmount"
+              id="intialAmmount"
+              placeholder="intialAmmount"
+              class="form-control"
+              required
+              #intialAmmount="ngModel"
+            />
+            <div
+              class="alert alert-danger mt-2"
+              role="alert"
+              *ngIf="intialAmmount.errors && f.submitted"
+            >
+              intialAmmount is required!
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-color px-5 mb-5 w-100">
+              {{ !flag ? "Create" : "Update" }}
+            </button>
+          </div>
+          <div class="form-group">
+            <div
+              class="alert alert-danger mt-2"
+              role="alert"
+              *ngIf="f.submitted && isCreateAccountFailed"
+            >
+              Login failed: Username or Password Incorrect
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

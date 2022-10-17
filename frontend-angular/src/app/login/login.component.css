@@ -1,0 +1,14 @@
+.btn-color {
+  background-color: black;
+  color: #fff;
+}
+
+.profile-image-pic {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}

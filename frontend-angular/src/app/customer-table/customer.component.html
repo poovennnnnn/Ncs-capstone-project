@@ -1,0 +1,69 @@
+<!-- <div class="container-fluid shadow">
+  <div class="row">
+    <div class="col">
+      <h1 class="h1 text-center mt-2">Customer Table</h1>
+      <input
+        class="mt-2"
+        type="text"
+        placeholder="Search"
+        [(ngModel)]="filterText"
+      />
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Sl.Number</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Account no</th>
+            <th>Account Balance</th>
+            <th>Edit or Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let customer of filteredCustomer
+                | paginate
+                  : {
+                      itemsPerPage: tableSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+              let i = index
+            "
+          >
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.customerName }}</td>
+            <td>{{ customer.accountType }}</td>
+            <td>{{ customer.accountNumber }}</td>
+            <td>{{ customer.accountBalance }}</td>
+            <td>
+              <i
+                class="btn btn-primary bi-pencil-square"
+                (click)="handleEdit(customer!.id)"
+              >
+              </i>
+
+              <i
+                class="bi-trash btn btn-danger m-2 p-1.5"
+                (click)="handleDelete(customer!.id)"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
+</div> -->

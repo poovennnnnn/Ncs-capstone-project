@@ -1,0 +1,41 @@
+<div class="container shadow">
+  <div class="row p-2 mt-2">
+    <h2 class="h2 text-center">Account Details</h2>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h4 class="font-weight-bold">
+            Account No:
+            {{ bankAccount?.actNumber }}
+          </h4>
+          <h4 class="font-weight-bold">
+            First Name:
+            {{ bankAccount?.customer?.firstName }}
+          </h4>
+          <h4 class="font-weight-bold">
+            Last Name:
+            {{ bankAccount?.customer?.lastName }}
+          </h4>
+          <h4 class="font-weight-bold">
+            First Name:
+            {{ bankAccount?.customer?.city }}
+          </h4>
+          <h4 class="font-weight-bold">
+            Phone:
+            {{ bankAccount?.customer?.phone }}
+          </h4>
+
+          <h4 class="font-weight-bold">
+            Account Type:
+            {{ bankAccount?.actType }}
+          </h4>
+          <h4 class="font-weight-bold">
+            Account Balance:
+            {{ bankAccount?.actBalance }}
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
