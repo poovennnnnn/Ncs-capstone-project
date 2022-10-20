@@ -8,7 +8,7 @@
 
 <div class="continer p-2 mt-2">
   <div class="row">
-    <div class="col-3 col-sm-12 col-md-3 align-middle">
+    <div class="col-3 col-sm-12 col-md-3 align-middle border-right">
       <!-- <div class="list-group" id="list-tab" role="tablist">
         <a
           class="list-group-item list-group-item-action"
@@ -44,6 +44,7 @@
         class="btn btn-outline-secondary mt-2 w-100"
         [ngClass]="{ active: active == 'create' }"
         (click)="createCustomer()"
+        routerLink="create"
       >
         Create Account
       </button>
@@ -51,26 +52,28 @@
         [ngClass]="{ active: active == 'show' }"
         class="btn btn-outline-secondary mt-2 w-100"
         (click)="showAllCustomer()"
+        routerLink="show"
       >
-        Show all Accout
+        Show all Customer Account
       </button>
-      <button
+      <!-- <button
         [ngClass]="{ active: active == 'search' }"
         class="btn btn-outline-secondary mt-2 w-100"
         (click)="searchCustomer()"
+        routerLink="show"
       >
         Search Account
-      </button>
+      </button> -->
     </div>
     <div class="col-9 col-sm-12 col-md-9">
       <div class="tab-content" id="nav-tabContent">
-        <div *ngIf="active == 'create'">
+        <!-- <div *ngIf="active == 'create'">
           <app-create-account></app-create-account>
         </div>
         <div *ngIf="active == 'show'">
           <app-customer></app-customer>
-        </div>
-        <div *ngIf="active == 'search'">search</div>
+        </div> -->
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>

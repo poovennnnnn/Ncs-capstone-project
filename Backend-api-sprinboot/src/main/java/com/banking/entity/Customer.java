@@ -44,4 +44,9 @@ public class Customer {
     private Set<Offers> offers;
     
 
+
+    
+    
+    
+    
 }

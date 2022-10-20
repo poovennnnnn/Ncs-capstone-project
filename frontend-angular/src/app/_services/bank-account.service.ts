@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Offers } from '../offers';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BankAccountService {
   PATH_OF_API = 'http://localhost:8080/account';
+  PATH_OF_OFFER = 'http://localhost:8080/offer/';
 
   constructor(private http: HttpClient) {}
 
@@ -26,6 +28,18 @@ export class BankAccountService {
   }
 
   public deleteById(id: number) {
-    return this.http.delete(this.PATH_OF_API + '/' + id);
+    return this.http.delete(this.PATH_OF_API + '/' + id, {
+      responseType: 'text',
+    });
+  }
+
+  public createOffer(offer: Offers, id: number) {
+    return this.http.post(this.PATH_OF_OFFER + id, offer, {
+      responseType: 'text',
+    });
+  }
+
+  public getAllOffer(id: number) {
+    return this.http.get(this.PATH_OF_OFFER + id);
   }
 }

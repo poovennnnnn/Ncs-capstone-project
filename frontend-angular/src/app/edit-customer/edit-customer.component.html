@@ -1,0 +1,228 @@
+<div class="container shadow-sm mb-2 mt-2">
+  <!-- <h1 class="text-center">Edit Coustomer</h1>
+  <div class="text-end">
+    <i class="bi bi-x-circle-fill btn rounded" (click)="close()"></i>
+  </div> -->
+  <div class="row">
+    <div class="col-11">
+      <h2 class="display-5 text-center text-secondary">Edit Customer Info</h2>
+    </div>
+    <div class="col">
+      <div class="text-end">
+        <i
+          class="bi bi-x-circle-fill btn btn-sm rounded"
+          style="font-size: 25px"
+          (click)="close()"
+        ></i>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-10">
+      <div class="container offset-md-1">
+        <div class="row">
+          <div class="col border mb-3">
+            <form
+              #f="ngForm"
+              (ngSubmit)="f.form.valid && createAccount(f)"
+              novalidate
+            >
+              <div class="row mt-2 mb-3">
+                <div class="form-group">
+                  <div class="text-danger" *ngIf="firstnameFailed">
+                    {{ firstnameError }}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="text-danger" *ngIf="lastnameFailed">
+                    {{ lastnameError }}
+                  </div>
+                </div>
+                <div class="form-group col">
+                  <input
+                    type="text"
+                    [(ngModel)]="form.firstName"
+                    ngModel
+                    name="firstName"
+                    (keypress)="validate()"
+                    id="firstName"
+                    placeholder="First Name"
+                    class="form-control"
+                    required
+                    #firstName="ngModel"
+                    minlength="2"
+                    maxlength="20"
+                    [ngClass]="{
+                      'is-invalid': f.submitted && firstName.errors
+                    }"
+                  />
+
+                  <div
+                    *ngIf="f.submitted && firstName.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="firstName.errors['required']">
+                      FirstName is required
+                    </div>
+                    <div *ngIf="firstName.errors['minlength']">
+                      FirstName must be at least 2 characters
+                    </div>
+                    <div *ngIf="firstName.errors['maxlength']">
+                      FirstName must be at most 20 characters
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group col">
+                  <input
+                    type="text"
+                    [(ngModel)]="form.lastName"
+                    (keypress)="validate()"
+                    ngModel
+                    name="lastName"
+                    id="lastName"
+                    placeholder="Last Name"
+                    class="form-control"
+                    required
+                    #lastName="ngModel"
+                    minlength="2"
+                    maxlength="20"
+                    [ngClass]="{
+                      'is-invalid': f.submitted && lastName.errors
+                    }"
+                  />
+
+                  <div
+                    *ngIf="f.submitted && lastName.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="lastName.errors['required']">
+                      LastName is required
+                    </div>
+                    <div *ngIf="lastName.errors['minlength']">
+                      LastName must be at least 2 characters
+                    </div>
+                    <div *ngIf="lastName.errors['maxlength']">
+                      LastName must be at most 20 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <div class="form-group">
+                  <div class="text-danger" *ngIf="cityfailed">
+                    {{ cityError }}
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  ngModel
+                  [(ngModel)]="form.city"
+                  (keypress)="validate()"
+                  name="city"
+                  id="city"
+                  placeholder="City"
+                  class="form-control"
+                  required
+                  #city="ngModel"
+                  minlength="2"
+                  [ngClass]="{ 'is-invalid': f.submitted && city.errors }"
+                />
+
+                <div
+                  *ngIf="f.submitted && city.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="city.errors['required']">City is required</div>
+                  <div *ngIf="city.errors['minlength']">
+                    City must be at least 2 characters
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="text-danger" *ngIf="phoneFailed">
+                  {{ phoneError }}
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">+65</span>
+                </div>
+                <input
+                  type="text"
+                  [(ngModel)]="form.phone"
+                  ngModel
+                  name="phone"
+                  id="phone"
+                  placeholder="Phone"
+                  class="form-control"
+                  required
+                  (keypress)="validatePhone()"
+                  #phone="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && phone.errors }"
+                  minlength="8"
+                  maxlength="8"
+                />
+
+                <div
+                  *ngIf="f.submitted && phone.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="phone.errors['required']">
+                    Phone Number is required
+                  </div>
+                  <div *ngIf="phone.errors['minlength']">
+                    Phone Number must have 8 digits
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <select
+                  type="text"
+                  required
+                  [(ngModel)]="form.actType"
+                  name="actType"
+                  class="form-select mb-3"
+                  aria-label="Default select example"
+                >
+                  <option value="" disabled selected>
+                    Select Account Type
+                  </option>
+                  <option value="savings">Savings</option>
+                  <option value="current">Current</option>
+                </select>
+              </div>
+
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                </div>
+                <input
+                  type="number"
+                  [(ngModel)]="form.actBalance"
+                  class="form-control"
+                  id="actBalance"
+                  placeholder="Initial Ammount"
+                  ngModel
+                  name="actBalance"
+                  required
+                  #actBalance="ngModel"
+                  [ngClass]="{
+                    'is-invalid': f.submitted && actBalance.errors
+                  }"
+                />
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-warning w-50 mb-2">
+                  Update
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

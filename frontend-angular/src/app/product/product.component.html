@@ -1,1 +1,36 @@
-<p>product works!</p>
+<div class="container">
+  <!-- <div class="row">
+    <div class="col">
+      <h1 class="display-4">Products</h1>
+    </div>
+  </div> -->
+  <div class="row">
+    <div class="col-4 mt-3 col-md-4" *ngFor="let x of products">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card" style="width: 18rem">
+              <img
+                class="card-img-top"
+                src="assets/creditCard.jpg"
+                alt="hello"
+                height="150"
+              />
+              <div class="card-body">
+                <h4 class="card-title">Credit Card</h4>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae
+                  qui, tempore, eius delectus quod porro esse eos sunt neque
+                  laboriosam
+                </p>
+                <div class="text-center">
+                  <a class="btn btn-primary w-50">Apply</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

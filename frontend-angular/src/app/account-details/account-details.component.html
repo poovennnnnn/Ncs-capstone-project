@@ -1,39 +1,53 @@
-<div class="container shadow">
-  <div class="row p-2 mt-2">
-    <h2 class="h2 text-center">Account Details</h2>
-
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h4 class="font-weight-bold">
-            Account No:
-            {{ bankAccount?.actNumber }}
-          </h4>
-          <h4 class="font-weight-bold">
-            First Name:
-            {{ bankAccount?.customer?.firstName }}
-          </h4>
-          <h4 class="font-weight-bold">
-            Last Name:
-            {{ bankAccount?.customer?.lastName }}
-          </h4>
-          <h4 class="font-weight-bold">
-            First Name:
-            {{ bankAccount?.customer?.city }}
-          </h4>
-          <h4 class="font-weight-bold">
-            Phone:
-            {{ bankAccount?.customer?.phone }}
-          </h4>
-
-          <h4 class="font-weight-bold">
-            Account Type:
-            {{ bankAccount?.actType }}
-          </h4>
-          <h4 class="font-weight-bold">
-            Account Balance:
-            {{ bankAccount?.actBalance }}
-          </h4>
+<div class="container shadow-sm">
+  <h2 class="text-center display-5 text-secondary">Account Profile</h2>
+  <div class="row pb-1">
+    <div class="col-10">
+      <div class="container offset-md-1">
+        <div class="row">
+          <div class="col border">
+            <table class="table table-borderless table-striped-columns">
+              <tbody>
+                <tr>
+                  <th class="display-6 text-secondary">Account No</th>
+                  <td class="h4 table-success">{{ bankAccount?.actNumber }}</td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">First Name</th>
+                  <td class="h4 table-success">
+                    {{ bankAccount?.customer?.firstName }}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">Last Name</th>
+                  <td class="h4 table-success">
+                    {{ bankAccount?.customer?.lastName }}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">City</th>
+                  <td class="h4 table-success">
+                    {{ bankAccount?.customer?.city }}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">Phone</th>
+                  <td class="h4 table-success">
+                    {{ bankAccount?.customer?.phone }}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">Account Type</th>
+                  <td class="h4 table-success">{{ bankAccount?.actType }}</td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">Account Balance</th>
+                  <td class="h4 table-success">
+                    <b>SGD </b>{{ bankAccount?.actBalance }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

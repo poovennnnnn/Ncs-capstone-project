@@ -1,0 +1,181 @@
+<!-- <div class="container shadow-sm">
+  <div class="row" *ngIf="flag">
+    <h2 class="text-center display-5 text-secondary">
+      CURRENT OFFERS AVAILABLE
+    </h2>
+    <div class="col">
+      <div class="cotainer pb-5 pt-2">
+        <div class="row justify-content-between">
+          <div class="col">
+            <div class="container">
+              <div class="row">
+                <div class="col pb-3">
+                  <div class="card" style="width: 18rem">
+                    <img
+                      class="card-img-top"
+                      src="assets/creditCard.jpg"
+                      alt="hello"
+                      height="150"
+                    />
+                    <div class="card-body">
+                      <h4 class="card-title">Credit Card</h4>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Quae qui, tempore, eius delectus quod porro esse
+                        eos sunt neque laboriosam
+                      </p>
+                      <div class="text-center">
+                        <a
+                          class="btn btn-primary w-50"
+                          (click)="handleCreditCard()"
+                          >Apply</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="container">
+              <div class="row">
+                <div class="col pb-3">
+                  <div class="card" style="width: 18rem">
+                    <img
+                      class="card-img-top"
+                      src="assets/home.jpg"
+                      alt="hello"
+                      height="150"
+                    />
+                    <div class="card-body">
+                      <h4 class="card-title">Home Loan</h4>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Quae qui, tempore, eius delectus quod porro esse
+                        eos sunt neque laboriosam
+                      </p>
+                      <div class="text-center">
+                        <a
+                          class="btn btn-primary w-50"
+                          (click)="handleHomeLoan()"
+                          >Apply</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="container">
+              <div class="row">
+                <div class="col pb-3">
+                  <div class="card" style="width: 18rem">
+                    <img
+                      class="card-img-top"
+                      src="assets/car.jpg"
+                      alt="hello"
+                      height="150"
+                    />
+                    <div class="card-body">
+                      <h4 class="card-title">Car Loan</h4>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Quae qui, tempore, eius delectus quod porro esse
+                        eos sunt neque laboriosam
+                      </p>
+                      <div class="text-center">
+                        <a
+                          class="btn btn-primary w-50"
+                          (click)="handleCreditCard()"
+                          >Apply</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pb-3" *ngFor="let x of offer">
+    <div class="col" *ngIf="active == x.offerName">
+      <app-offer-details
+        [name]="name"
+        [offer]="x"
+        (testEvent)="changeFlag($event)"
+      ></app-offer-details>
+    </div>
+  </div>
+</div> -->
+<!-- <router-outlet></router-outlet> -->
+<div class="container shadow-sm">
+  <div class="row" *ngIf="flag">
+    <h2 class="text-center display-5 text-secondary">
+      CURRENT OFFERS AVAILABLE
+    </h2>
+    <div class="col">
+      <div class="cotainer pb-5 pt-2">
+        <div class="row justify-content-between">
+          <div class="col">
+            <div class="container">
+              <div class="row">
+                <div class="col pb-3" *ngFor="let x of offer">
+                  <div class="card" style="width: 18rem">
+                    <img
+                      class="card-img-top"
+                      src="assets/creditCard.jpg"
+                      alt="hello"
+                      height="150"
+                    />
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        {{
+                          x.offerName == "CREDITCARD"
+                            ? "CREDIT CARD"
+                            : x.offerName == "HOMELOAN"
+                            ? "HOME LOAN"
+                            : x.offerName == "CARLOAN"
+                            ? "CAR LOAN"
+                            : ""
+                        }}
+                      </h4>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Quae qui, tempore, eius delectus quod porro esse
+                        eos sunt neque laboriosam
+                      </p>
+                      <div class="text-center">
+                        <a
+                          class="btn btn-primary w-50"
+                          (click)="handleCreditCard(x)"
+                          >Apply</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row pb-3" *ngFor="let x of offer">
+    <div class="col" *ngIf="active == x.offerName">
+      <app-offer-details
+        [name]="name"
+        [offer]="x"
+        (testEvent)="changeFlag($event)"
+      ></app-offer-details>
+    </div>
+  </div> -->
+</div>

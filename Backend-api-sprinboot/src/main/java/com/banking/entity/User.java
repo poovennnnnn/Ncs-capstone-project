@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-	// one separate table is created for this
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -43,7 +43,7 @@ public class User {
 	private Set<Role> role;
 	
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne( cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "bk_id")
 	private BankAccount bankAccount;
 	

@@ -50,6 +50,8 @@ public class BankAccount {
     @JoinColumn(name = "cus_id")
     private Customer customer;
     
+
+    
     
 
     

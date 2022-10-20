@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { BankAccount } from '../bank-account';
+import { User } from '../user';
 import { BankAccountService } from '../_services/bank-account.service';
 import { UserAuthService } from '../_services/user-auth.service';
 import { UserService } from '../_services/user.service';
@@ -12,7 +13,6 @@ import { UserService } from '../_services/user.service';
 })
 export class UserComponent implements OnInit {
   bankAccount?: BankAccount;
-  str: string = '';
   active: string = '';
   constructor(
     private authService: UserAuthService,
@@ -21,9 +21,8 @@ export class UserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.active = 'view';
-    let user = this.authService.getUser();
-    let id = user.bankAccount.id;
+    let user = this.authService.getUser() as User;
+    let id = user.bankAccount?.id as number;
     console.log(id);
     this.bankService.findById(id).subscribe(
       (response) => {
@@ -31,7 +30,7 @@ export class UserComponent implements OnInit {
         // console.log(this.bankAccount);
       },
       (err) => {
-        // console.log(err);
+        console.log(err);
       }
     );
   }
@@ -40,8 +39,8 @@ export class UserComponent implements OnInit {
     // lastValueFrom(this.userService.forAdmin());
     // this.str = (await lastValueFrom(this.userService.forAdmin())) as string;
     // console.log(this.str);
-    let user = this.authService.getUser();
-    let id = user.bankAccount.id;
+    let user = this.authService.getUser() as User;
+    let id = user.bankAccount?.id as number;
     console.log(id);
     this.bankService.findById(id).subscribe(
       (response) => {
@@ -57,11 +56,7 @@ export class UserComponent implements OnInit {
     this.active = 'view';
   }
 
-  fundTransfer() {
-    this.active = 'fund';
-  }
-
   offers() {
-    this.active = 'offers';
+    this.active = 'offer';
   }
 }

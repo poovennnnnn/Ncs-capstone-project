@@ -13,8 +13,9 @@ public class UserRequest {
 	private String city;
 	private String actType;
 	private Integer phone;
-	private Double balance;
+	private Double actBalance;
 	private Integer actNumber;
+	private String username;
 	
 	
 }

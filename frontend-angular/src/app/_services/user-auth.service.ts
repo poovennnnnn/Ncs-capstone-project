@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '../user';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class UserAuthService {
     localStorage.setItem('roles', JSON.stringify(roles));
   }
 
-  public getRoles(): [] {
+  public getRoles() {
     return JSON.parse(localStorage.getItem('roles') as string);
   }
 
@@ -22,19 +23,28 @@ export class UserAuthService {
     return localStorage.getItem('jwtToken') as string;
   }
 
-  public saveUser(user: any) {
+  public saveUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
-  public getUser() {
-    return JSON.parse(localStorage.getItem('user') as any);
+  public getUser(): User {
+    return JSON.parse(localStorage.getItem('user') as string);
+  }
+
+  public getBankAccountId() {
+    return this.getUser().bankAccount?.id;
+  }
+
+  public getUserId() {
+    return this.getUser().id;
   }
 
   public clear() {
     localStorage.clear();
   }
 
-  public isLoggedIn() {
-    return this.getRoles() && this.getToken();
+  public isLoggedIn(): boolean {
+    // return this.getRoles() && this.getToken();
+    return this.getRoles() != null && this.getToken() != null;
   }
 }

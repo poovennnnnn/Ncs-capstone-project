@@ -1,7 +1,5 @@
 package com.banking.exception;
 
-
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,16 +21,11 @@ import com.banking.dto.ErrorDetails;
 @RestController
 public class GlobalExceptionHandler  extends ResponseEntityExceptionHandler {
 	
-	
-
-
-
 	@ExceptionHandler(AccountAlreadyExistsException.class)
 	public ResponseEntity<ErrorDetails> handleAccountAlreadyExistsException(
 	        AccountAlreadyExistsException exception,WebRequest webRequest
 			
 			){
-		
 		
 		ErrorDetails details = new ErrorDetails(new Date(),exception.getMessage(),webRequest.getDescription(false));
 		
@@ -90,7 +83,5 @@ public class GlobalExceptionHandler  extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<>(details,HttpStatus.BAD_REQUEST);
 	}
 
-
-	
 
 }

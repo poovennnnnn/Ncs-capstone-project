@@ -1,12 +1,12 @@
-<!-- <div class="container-fluid shadow">
+<div class="container-fluid shadow">
+  <h1 class="text-center text-secondary display-5 mt-2">Account List</h1>
   <div class="row">
-    <div class="col">
-      <h1 class="h1 text-center mt-2">Customer Table</h1>
+    <div class="form-group col-5">
       <input
-        class="mt-2"
         type="text"
-        placeholder="Search"
+        class="form-control"
         [(ngModel)]="filterText"
+        placeholder="Search...."
       />
     </div>
   </div>
@@ -14,19 +14,22 @@
     <div class="col">
       <table class="table table-bordered table-striped">
         <thead>
-          <tr>
-            <th>Sl.Number</th>
-            <th>Name</th>
-            <th>Type</th>
+          <tr class="table-primary">
             <th>Account no</th>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>City</th>
+            <th>Phone</th>
+            <th>Account Type</th>
             <th>Account Balance</th>
-            <th>Edit or Delete</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           <tr
             *ngFor="
-              let customer of filteredCustomer
+              let account of filteredList
                 | paginate
                   : {
                       itemsPerPage: tableSize,
@@ -36,21 +39,26 @@
               let i = index
             "
           >
-            <td>{{ customer.id }}</td>
-            <td>{{ customer.customerName }}</td>
-            <td>{{ customer.accountType }}</td>
-            <td>{{ customer.accountNumber }}</td>
-            <td>{{ customer.accountBalance }}</td>
+            <td scope="row">{{ account.actNumber }}</td>
+            <td>{{ account.customer?.firstName }}</td>
+            <td>{{ account.customer?.lastName }}</td>
+            <td>{{ account.customer?.city }}</td>
+            <td>{{ account.customer?.phone }}</td>
+            <td>{{ account.actType }}</td>
+            <td>$ {{ account.actBalance }}</td>
             <td>
               <i
                 class="btn btn-primary bi-pencil-square"
-                (click)="handleEdit(customer!.id)"
+                (click)="handleEdit(account!.id)"
               >
               </i>
-
+            </td>
+            <td>
               <i
-                class="bi-trash btn btn-danger m-2 p-1.5"
-                (click)="handleDelete(customer!.id)"
+                class="bi-trash btn btn-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                (click)="bankId(account!.id)"
               ></i>
             </td>
           </tr>
@@ -63,6 +71,165 @@
           (pageChange)="onTableDataChange($event)"
         >
         </pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <h4>Are you sure want to delete</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="handleDelete()"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container-fluid shadow">
+  <h1 class="text-center mt-2">Customer Table</h1>
+  <div class="row">
+    <div class="form-group col-5">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="filterText"
+        placeholder="Search...."
+      />
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-12">
+      <div class="container">
+        <div class="">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr class="table-primary">
+                <th>Account no</th>
+                <th>First Name</th>
+                <th>Second Name</th>
+                <th>City</th>
+                <th>Phone</th>
+                <th>Account Type</th>
+                <th>Account Balance</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let account of filteredList
+                    | paginate
+                      : {
+                          itemsPerPage: tableSize,
+                          currentPage: page,
+                          totalItems: count
+                        };
+                  let i = index
+                "
+              >
+                <td scope="row">{{ account.actNumber }}</td>
+                <td>{{ account.customer?.firstName }}</td>
+                <td>{{ account.customer?.lastName }}</td>
+                <td>{{ account.customer?.city }}</td>
+                <td>{{ account.customer?.phone }}</td>
+                <td>{{ account.actType }}</td>
+                <td>$ {{ account.actBalance }}</td>
+                <td>
+                  <i
+                    class="btn btn-primary bi-pencil-square"
+                    (click)="handleEdit(account!.id)"
+                  >
+                  </i>
+                </td>
+                <td>
+                  <i
+                    class="bi-trash btn btn-danger m-2 p-1.5"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                    (click)="bankId(account!.id)"
+                  ></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <h2>Are you sure want to delete</h2>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="handleDelete()"
+        >
+          Delete
+        </button>
       </div>
     </div>
   </div>

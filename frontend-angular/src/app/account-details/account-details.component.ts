@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BankAccount } from '../bank-account';
+import { User } from '../user';
 import { BankAccountService } from '../_services/bank-account.service';
 import { UserAuthService } from '../_services/user-auth.service';
 import { UserService } from '../_services/user.service';
@@ -23,17 +24,18 @@ export class AccountDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let user = this.authService.getUser();
-    let id = user.bankAccount.id;
-    console.log(id);
-    this.bankService.findById(id).subscribe(
-      (response) => {
-        this.bankAccount = response;
-        console.log(this.bankAccount);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    // let id = user.bankAccount?.id as number;
+
+    this.bankService
+      .findById(this.authService.getBankAccountId() as number)
+      .subscribe(
+        (response) => {
+          this.bankAccount = response;
+          console.log(this.bankAccount);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 }

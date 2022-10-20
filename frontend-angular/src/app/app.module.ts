@@ -24,8 +24,10 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-import { FundTransferComponent } from './fund-transfer/fund-transfer.component';
 import { CustomerComponent } from './customer-table/customer.component';
+import { OfferComponent } from './offer/offer.component';
+import { OfferDetailsComponent } from './offer-details/offer-details.component';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,10 @@ import { CustomerComponent } from './customer-table/customer.component';
     CreateAccountComponent,
     CustomerComponent,
     AccountDetailsComponent,
-    FundTransferComponent,
+
+    OfferComponent,
+    OfferDetailsComponent,
+    EditCustomerComponent,
   ],
   imports: [
     BrowserModule,

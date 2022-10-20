@@ -12,15 +12,13 @@ export class AdminComponent implements OnInit {
   active: string = '';
   constructor(private userService: UserService) {}
 
-  ngOnInit(): void {
-    this.active = 'create';
-  }
+  ngOnInit(): void {}
 
-  async handleClick() {
-    lastValueFrom(this.userService.forAdmin());
-    this.str = (await lastValueFrom(this.userService.forAdmin())) as string;
-    console.log(this.str);
-  }
+  // async handleClick() {
+  //   lastValueFrom(this.userService.forAdmin());
+  //   this.str = (await lastValueFrom(this.userService.forAdmin())) as string;
+  //   console.log(this.str);
+  // }
 
   createCustomer() {
     this.active = 'create';
@@ -28,9 +26,5 @@ export class AdminComponent implements OnInit {
 
   showAllCustomer() {
     this.active = 'show';
-  }
-
-  searchCustomer() {
-    this.active = 'search';
   }
 }

@@ -1,4 +1,4 @@
-<h1 class="text-center mt-2">Customer Area</h1>
+<!-- <h1 class="text-center mt-2 h1">CUSTOMER AREA</h1> -->
 
 <div class="continer mt-2 p-2">
   <div class="row">
@@ -7,25 +7,28 @@
         class="btn btn-outline-secondary mt-2 w-100"
         [ngClass]="{ active: active == 'view' }"
         (click)="viewCustomerDetails()"
+        routerLink="account"
       >
         View Account Details
       </button>
       <button
-        [ngClass]="{ active: active == 'fund' }"
+        [ngClass]="{ active: active == 'offer' }"
         class="btn btn-outline-secondary mt-2 w-100"
-        (click)="fundTransfer()"
+        (click)="offers()"
+        routerLink="offer"
       >
-        Fund Transfer
+        View Offers
       </button>
     </div>
-    <div class="col-9 col-sm-12 col-md-9">
+    <div class="col-9 col-sm-12 col-md-9 my-sm-3">
       <div class="tab-content" id="nav-tabContent">
-        <div *ngIf="active == 'view'">
+        <!-- <div *ngIf="active == 'view'">
           <app-account-details></app-account-details>
         </div>
-        <div *ngIf="active == 'fund'">
-          <app-fund-transfer></app-fund-transfer>
-        </div>
+        <div *ngIf="active == 'offer'">
+          <app-offer></app-offer>
+        </div> -->
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>

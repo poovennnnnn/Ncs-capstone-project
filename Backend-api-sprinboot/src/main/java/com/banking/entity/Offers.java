@@ -18,8 +18,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Offers {
     
-    
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -31,7 +29,7 @@ public class Offers {
     private Integer loanAmmount;
     
     @Column(name = "interest_rate")
-    private Integer interestRate;
+    private double interestRate;
     
     @Column(name = "int_free_cash")
     private Integer intFreeCash;
@@ -39,12 +37,13 @@ public class Offers {
     @Column(name = "annual_fee")
     private Integer annualFee;
     
-
-
-//    @ManyToOne(fetch =FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "customer", nullable = false)
-//    private Customer customer;
+    @Column(name = "preclosure_charges")
+    private Integer preclosureCharges;
     
+    @Column(name = "customer_id")
+    private Integer customerId;
+    
+
     
 
 }
