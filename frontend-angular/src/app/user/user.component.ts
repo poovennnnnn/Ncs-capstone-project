@@ -16,40 +16,47 @@ export class UserComponent implements OnInit {
   active: string = '';
   constructor(
     private authService: UserAuthService,
-    private userService: UserService,
     private bankService: BankAccountService
   ) {}
 
   ngOnInit(): void {
-    let user = this.authService.getUser() as User;
-    let id = user.bankAccount?.id as number;
-    console.log(id);
-    this.bankService.findById(id).subscribe(
-      (response) => {
-        this.bankAccount = response;
-        // console.log(this.bankAccount);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    // let user = this.authService.getUser() as User;
+    // let id = user.bankAccount?.id as number;
+
+    // this.bankService.findById(id).subscribe(
+    //   (response) => {
+    //     this.bankAccount = response;
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //   }
+    // );
+    this.getBankAccount();
   }
 
-  async handleClick() {
-    // lastValueFrom(this.userService.forAdmin());
-    // this.str = (await lastValueFrom(this.userService.forAdmin())) as string;
-    // console.log(this.str);
+  // async handleClick() {
+  // lastValueFrom(this.userService.forAdmin());
+  // this.str = (await lastValueFrom(this.userService.forAdmin())) as string;
+  // console.log(this.str);
+  // let user = this.authService.getUser() as User;
+  // let id = user.bankAccount?.id as number;
+  // console.log(id);
+  // this.bankService.findById(id).subscribe(
+  //   (response) => {
+  //     console.log(response);
+  //   },
+  //   (err) => {
+  //     console.log(err);
+  //   }
+  // );
+  // }
+
+  async getBankAccount() {
     let user = this.authService.getUser() as User;
     let id = user.bankAccount?.id as number;
-    console.log(id);
-    this.bankService.findById(id).subscribe(
-      (response) => {
-        console.log(response);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.bankAccount = (await lastValueFrom(
+      this.bankService.findById(id)
+    )) as BankAccount;
   }
 
   viewCustomerDetails() {

@@ -21,14 +21,11 @@ export class OfferDetailsComponent implements OnInit {
     private bankService: BankAccountService,
     private userAuthService: UserAuthService,
     private router: Router,
-    private route: ActivatedRoute,
+
     private dataService: DataServiceService
   ) {}
 
   ngOnInit(): void {
-    // this.route.queryParams.subscribe((data) => {
-    //   this.offerList = data['offer'];
-    // });
     this.offer = this.dataService.getOffer();
   }
 
@@ -48,8 +45,6 @@ export class OfferDetailsComponent implements OnInit {
   }
 
   close() {
-    // this.testEvent.emit(true);
-    // console.log('clicked');
     this.router.navigate(['user/offer']);
   }
 }

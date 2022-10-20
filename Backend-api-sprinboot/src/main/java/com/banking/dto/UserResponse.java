@@ -10,7 +10,6 @@ public class UserResponse {
 	
 	public UserResponse() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public UserResponse(String token, String message) {
 		super();

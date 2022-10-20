@@ -1,50 +1,5 @@
-<!-- <div class="container border">
-  <div class="row">
-    <div class="col-6">
-      <h2 class="h1">{{ name }}</h2>
-    </div>
-    <div class="col">
-      <div class="text-end">
-        <i class="bi bi-x-circle-fill btn rounded" (click)="close()"></i>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col pb-3">
-      <table class="table table-borderless table-striped-columns">
-        <tbody>
-          <tr *ngIf="offer?.annualFee">
-            <th *ngIf="offer?.annualFee">Annual Fee</th>
-            <td>$ {{ offer?.annualFee }}</td>
-          </tr>
-          <tr *ngIf="offer?.interestRate">
-            <th>Interest Rate</th>
-            <td>{{ offer?.interestRate }} %</td>
-          </tr>
-          <tr *ngIf="offer?.intFreeCash">
-            <th>Interest Free Cash</th>
-            <td>$ {{ offer?.intFreeCash }}</td>
-          </tr>
-          <tr *ngIf="offer?.loanAmmount">
-            <th>Loan Ammount</th>
-            <td>$ {{ offer?.loanAmmount }}</td>
-          </tr>
-          <tr *ngIf="offer?.preclosureCharges">
-            <th>Pre Closure Charges</th>
-            <td>$ {{ offer?.preclosureCharges }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="text-center">
-        <button class="btn btn-primary" (click)="handleClick()">
-          AVAIL OFFER
-        </button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="container">
+  <h1 class="display-4 text-secondary text-center">Offer Details</h1>
   <div class="row">
     <div class="col-6">
       <h2 class="text-center display-5 text-secondary">{{ name }}</h2>
@@ -64,13 +19,20 @@
           <div class="row">
             <div class="col">
               <div class="card-body">
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
-                  sequi inventore maiores placeat cumque incidunt omnis labore
-                  eius, sapiente perferendis ipsum tempora, quasi pariatur
-                  distinctio blanditiis nesciunt. Sequi, quisquam repellat.
-                  eius, sapiente perferendis ipsum tempora, quasi pariatur
-                  distinctio blanditiis nesciunt. Sequi, quisquam repellat.
+                <p class="card-text" *ngIf="offer!.offerName == 'HOMELOAN'">
+                  A good home is a place you can always come back to, and a
+                  great mortgage is one that helps you get there. No prepayment
+                  penalties. You can pay early without a charge.
+                </p>
+                <p class="card-text" *ngIf="offer!.offerName == 'CREDITCARD'">
+                  We offer several different types of creditcard to meet the
+                  various needs of our finacial family. From rewards cards, to
+                  balance tranfer, to cards that help you built your credit
+                </p>
+                <p class="card-text" *ngIf="offer!.offerName == 'CARLOAN'">
+                  Looking for the best and cheapest car loan interest rates in
+                  Singapore for new car financing, used car financing, and
+                  commercial vehicle financing
                 </p>
 
                 <table class="table table-borderless table-striped-columns">
@@ -113,7 +75,7 @@
             <div class="col">
               <img
                 class="card-img-top"
-                src="assets/bank.jpg"
+                src="assets/loan.jpg"
                 alt="hello"
                 height="400"
               />

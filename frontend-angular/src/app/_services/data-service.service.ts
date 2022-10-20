@@ -6,6 +6,7 @@ import { Offers } from '../offers';
 })
 export class DataServiceService {
   public offer?: Offers;
+  public response: any;
 
   constructor() {}
 

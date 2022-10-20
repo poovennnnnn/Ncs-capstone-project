@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.banking.exception.JwtExpiredException;
+
 import com.banking.util.JwtUtil;
 
 import io.jsonwebtoken.ExpiredJwtException;

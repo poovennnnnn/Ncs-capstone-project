@@ -3,7 +3,9 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { lastValueFrom } from 'rxjs';
+import { BankAccount } from '../bank-account';
 import { BankAccountService } from '../_services/bank-account.service';
+import { DataServiceService } from '../_services/data-service.service';
 
 @Component({
   selector: 'app-create-account',
@@ -27,17 +29,20 @@ export class CreateAccountComponent implements OnInit {
   accountType: string = '';
   form: any = {
     username: '',
+    password: '',
     firstName: '',
     lastName: '',
     city: '',
     actType: '',
     phone: '',
     actBalance: '',
+    actNumber: '',
   };
 
   constructor(
     private bankService: BankAccountService,
-    private router: Router
+    private router: Router,
+    private dataService: DataServiceService
   ) {}
 
   ngOnInit(): void {}
@@ -51,24 +56,27 @@ export class CreateAccountComponent implements OnInit {
 
     console.log(this.form);
 
-    let response = await lastValueFrom(
+    this.form.password = f.value['password'];
+    console.log(f);
+    console.log(this.form.password);
+
+    let response = (await lastValueFrom(
       this.bankService.create(this.form)
     ).catch((err) => {
       console.log(err);
-    });
+    })) as BankAccount;
 
     if (response != null) {
-      this.router.navigate(['admin']);
+      this.form.actNumber = response.actNumber;
+      this.dataService.response = this.form;
+      this.router.navigate(['admin/success']);
     }
-
-    console.log(response);
   }
 
   validate() {
     if (Number.isInteger(parseInt(this.form.username.charAt(0)))) {
       this.usernameFailed = true;
       this.usernameError = 'First Letter of the Username cannot contain digit';
-      // return false;
     } else {
       this.usernameFailed = false;
     }
@@ -76,7 +84,6 @@ export class CreateAccountComponent implements OnInit {
     if (Number.isInteger(parseInt(this.form.firstName.charAt(0)))) {
       this.firstnameFailed = true;
       this.firstnameError = 'First Letter cannot contain digit';
-      // return false;
     } else {
       this.firstnameFailed = false;
     }
@@ -84,7 +91,6 @@ export class CreateAccountComponent implements OnInit {
     if (Number.isInteger(parseInt(this.form.lastName.charAt(0)))) {
       this.lastnameFailed = true;
       this.lastnameError = 'First Letter of lastname cannot contain digit';
-      // return false;
     } else {
       this.lastnameFailed = false;
     }
@@ -92,30 +98,17 @@ export class CreateAccountComponent implements OnInit {
     if (Number.isInteger(parseInt(this.form.city.charAt(0)))) {
       this.cityfailed = true;
       this.cityError = 'First Letter of city cannot contain digit';
-      // return false;
     } else {
       this.cityfailed = false;
     }
-    // if (!Number.isInteger(parseInt(this.form.phone))) {
-    //   this.phoneFailed = true;
-    //   this.phoneError = 'this field Should only contain Number';
-    //   // return false;
-    // } else {
-    //   this.phoneFailed = false;
-    //   // this.phoneFailed = true;
-    //   // this.phoneError = 'this field Should only contain Number';
-    // }
   }
 
   validatePhone() {
     if (!Number(this.form.phone)) {
       this.phoneFailed = true;
       this.phoneError = 'this field Should only contain Number';
-      // return false;
     } else {
       this.phoneFailed = false;
-      // this.phoneFailed = true;
-      // this.phoneError = 'this field Should only contain Number';
     }
   }
   isFormvalid() {

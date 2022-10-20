@@ -1,130 +1,3 @@
-<!-- <div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="card m-2">
-        <h1 class="h1 text-center mt-2">Create Bank Account</h1>
-        <form
-          class="card-body cardbody-color shadow"
-          #f="ngForm"
-          (ngSubmit)="f.form.valid && createAccount(f)"
-          novalidate
-        >
-          <div class="form-row">
-            <div class="col">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="First name"
-              />
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Last name" />
-            </div>
-          </div>
-       
-          <div class="mb-3 form-floating">
-            <input
-              type="text"
-              ngModel
-              name="customerName"
-              id="customerName"
-              placeholder="customerName"
-              class="form-control"
-              required
-              #customerName="ngModel"
-            />
-            <div
-              class="alert alert-danger mt-2"
-              role="alert"
-              *ngIf="customerName.errors && f.submitted"
-            >
-              customerName is required!
-            </div>
-          </div>
-
-          <select
-            ngModel
-            class="form-select mb-3"
-            aria-label="Default select example"
-            name="accountType"
-          >
-            <option value="" disabled selected>Account Type</option>
-            <option value="Savings">Savings</option>
-            <option value="Current">Current</option>
-          </select>
-
-          <div class="mb-3">
-            <input
-              type="number"
-              ngModel
-              name="intialAmmount"
-              id="intialAmmount"
-              placeholder="intialAmmount"
-              class="form-control"
-              required
-              #intialAmmount="ngModel"
-            />
-            <div
-              class="alert alert-danger mt-2"
-              role="alert"
-              *ngIf="intialAmmount.errors && f.submitted"
-            >
-              intialAmmount is required!
-            </div>
-          </div>
-
-          <div class="text-center">
-            <button type="submit" class="btn btn-color px-5 mb-5 w-100">
-              {{ !flag ? "Create" : "Update" }}
-            </button>
-          </div>
-          <div class="form-group">
-            <div
-              class="alert alert-danger mt-2"
-              role="alert"
-              *ngIf="f.submitted && isCreateAccountFailed"
-            >
-              Login failed: Username or Password Incorrect
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
- -->
-
-<!-- <div class="mb-3 form-floating">
-          <input
-            type="text"
-            ngModel
-            name="username"
-            id="floatingInput"
-            placeholder="username"
-            class="form-control"
-            required
-            #username="ngModel"
-            minlength="5"
-            maxlength="20"
-            [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
-          />
-          <label for="floatingUsername">Username</label>
-          <div
-            *ngIf="f.submitted && username.errors"
-            class="invalid-feedback"
-          >
-            <div *ngIf="username.errors['required']">
-              Username is required
-            </div>
-            <div *ngIf="username.errors['minlength']">
-              Username must be at least 6 characters
-            </div>
-            <div *ngIf="username.errors['maxlength']">
-              Username must be at most 20 characters
-            </div>
-          </div>
-        </div> -->
-
 <div class="container shadow mb-2 mt-2">
   <h1 class="text-center text-secondary display-5">Create Account</h1>
   <div class="row mt-2">
@@ -137,36 +10,6 @@
               (ngSubmit)="f.form.valid && createAccount(f)"
               novalidate
             >
-              <!-- <div class="mb-3 form-group">
-              <input
-                type="text"
-                ngModel
-                name="username"
-                id="floatingInput"
-                placeholder="username"
-                class="form-control"
-                required
-                #username="ngModel"
-                minlength="5"
-                maxlength="20"
-                [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
-              />
-              <label for="floatingUsername">Username</label>
-              <div
-                *ngIf="f.submitted && username.errors"
-                class="invalid-feedback"
-              >
-                <div *ngIf="username.errors['required']">
-                  Username is required
-                </div>
-                <div *ngIf="username.errors['minlength']">
-                  Username must be at least 6 characters
-                </div>
-                <div *ngIf="username.errors['maxlength']">
-                  Username must be at most 20 characters
-                </div>
-              </div>
-            </div> -->
               <div class="row mt-2 mb-3">
                 <div class="form-group">
                   <div class="text-danger" *ngIf="usernameFailed">
@@ -189,9 +32,6 @@
                     (keypress)="validate()"
                     [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
                   />
-                  <!-- <div *ngIf="isCreateAccountFailed" class="invalid-feedback">
-                    {{ errorMessage }}
-                  </div> -->
 
                   <div
                     *ngIf="f.submitted && username.errors"

@@ -21,7 +21,7 @@ export class OfferComponent implements OnInit {
   active: string = '';
   name: string = '';
 
-  offer?: Offers[];
+  offers?: Offers[];
   flag: boolean = true;
 
   constructor(
@@ -49,7 +49,7 @@ export class OfferComponent implements OnInit {
   }
 
   async getAllOffer() {
-    this.offer = (await lastValueFrom(
+    this.offers = (await lastValueFrom(
       this.bankService.getAllOffer(
         this.userAuthService.getBankAccountId() as number
       )
@@ -57,7 +57,7 @@ export class OfferComponent implements OnInit {
       console.log('Err in offer ' + err);
     })) as Offers[];
 
-    console.log(this.offer);
+    console.log(this.offers);
   }
 
   handleCreditCard(offer: Offers) {

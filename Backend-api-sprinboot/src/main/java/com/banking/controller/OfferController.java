@@ -34,9 +34,6 @@ public class OfferController {
 
     @Autowired
     private BankAccountService bankService;
-
-//    @Autowired
-//    private OffersRepo offerRepo;
     
     @Autowired
     private OfferService offerService;
@@ -62,13 +59,9 @@ public class OfferController {
             account.getCustomer().getOffers().add(offer);
             bankService.update(account);
             return new   ResponseEntity<>("Offer Availed Successfully",HttpStatus.OK);
-        }
-        
-        
-       
+        }      
     }
-
-
+    
     @GetMapping("/{id}")
     @PreAuthorize(value = "hasAnyRole('ADMIN','USER')")
     public ResponseEntity<Object> getOffer(@PathVariable int id) throws AccountNotFoundException{
@@ -77,34 +70,18 @@ public class OfferController {
         List<String> strArr = new ArrayList<String>();
 
         String[] arr = {"CREDITCARD","HOMELOAN","CARLOAN"};
-        
-  
         for(String x :arr) {
-
            boolean flag =  offerService.existsByCustomerIdAndOfferName(account.getCustomer().getId(), x);
            if(!flag) {
                strArr.add(x);
            }
-
         }
-        
-//        for(String x :arr) {
-//
-//            boolean flag =  offerRepo.existsByCustomerAndOfferName(account.getCustomer().getId(), x);
-//            if(!flag) {
-//                strArr.add(x);
-//            }
-//
-//         }
-        
         for(String x:strArr) {
             offerList.add(generateOffer(x, account));
         }
 
         return new ResponseEntity<>(offerList,HttpStatus.OK);
     }
-
-
 
     private Offers generateOffer(String str,BankAccount account) {
 

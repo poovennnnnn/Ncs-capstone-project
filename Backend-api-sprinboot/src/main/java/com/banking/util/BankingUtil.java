@@ -13,8 +13,7 @@ import com.banking.service.BankAccountService;
 @Component
 public class BankingUtil {
     
-    @Autowired
-    private  BankAccountService service;
+ 
     
     
     public  Integer getRandomNumber() {
@@ -22,9 +21,6 @@ public class BankingUtil {
      
           long number = (long) Math.floor(Math.random() * 9_000_000L) + 1_000_000_000L;
       
-        while(service.existsByActNumber((int)number)) {
-            number = (long) Math.floor(Math.random() * 9_000_000L) + 1_000_000_000L;
-        }
         return (int) number ;
     }
     

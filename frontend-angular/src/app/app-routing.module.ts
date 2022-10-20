@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { OfferComponent } from './offer/offer.component';
 import { ProductComponent } from './product/product.component';
+import { SuccessResponseComponent } from './success-response/success-response.component';
 import { UserComponent } from './user/user.component';
 import { AuthGuard } from './_auth/auth.guard';
 
@@ -35,6 +36,10 @@ const routes: Routes = [
       {
         path: 'edit',
         component: EditCustomerComponent,
+      },
+      {
+        path: 'success',
+        component: SuccessResponseComponent,
       },
     ],
   },

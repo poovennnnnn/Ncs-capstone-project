@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { BankAccount } from '../bank-account';
 import { BankAccountService } from '../_services/bank-account.service';
-import { UserAuthService } from '../_services/user-auth.service';
-import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-customer',
@@ -45,10 +43,8 @@ export class CustomerComponent implements OnInit {
   }
 
   constructor(
-    private authService: UserAuthService,
-    private userService: UserService,
     private bankService: BankAccountService,
-    private route: ActivatedRoute,
+
     private router: Router
   ) {}
 
@@ -56,7 +52,7 @@ export class CustomerComponent implements OnInit {
     this.getAllBankaccount();
   }
 
-  getAllBankaccount() {
+  async getAllBankaccount() {
     this.bankService.findAll().subscribe(
       (response) => {
         console.log(response as BankAccount[]);
@@ -76,9 +72,6 @@ export class CustomerComponent implements OnInit {
 
   handleEdit(id?: number) {
     console.log('clicked in customer component');
-    // this.router.navigate(['/login'], {
-    //   queryParams: { targetUrl: route.url },
-    // });
     this.router.navigate(['admin/edit'], {
       queryParams: { accountId: id },
     });
@@ -131,7 +124,6 @@ export class CustomerComponent implements OnInit {
   }
 
   bankId(id?: number) {
-    console.log('hellooooooooo');
     this.accountId = id;
   }
 

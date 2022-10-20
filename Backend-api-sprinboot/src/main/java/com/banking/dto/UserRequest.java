@@ -16,6 +16,7 @@ public class UserRequest {
 	private Double actBalance;
 	private Integer actNumber;
 	private String username;
+
 	
 	
 }

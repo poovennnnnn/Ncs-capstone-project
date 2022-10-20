@@ -80,7 +80,7 @@ export class EditCustomerComponent implements OnInit {
     });
 
     if (response != null) {
-      this.router.navigate(['admin']);
+      this.router.navigate(['admin/show']);
     }
 
     console.log(response);
@@ -90,7 +90,6 @@ export class EditCustomerComponent implements OnInit {
     if (Number.isInteger(parseInt(this.form.username.charAt(0)))) {
       this.usernameFailed = true;
       this.usernameError = 'First Letter of the Username cannot contain digit';
-      // return false;
     } else {
       this.usernameFailed = false;
     }
@@ -98,7 +97,6 @@ export class EditCustomerComponent implements OnInit {
     if (Number.isInteger(parseInt(this.form.firstName.charAt(0)))) {
       this.firstnameFailed = true;
       this.firstnameError = 'First Letter cannot contain digit';
-      // return false;
     } else {
       this.firstnameFailed = false;
     }
@@ -106,7 +104,6 @@ export class EditCustomerComponent implements OnInit {
     if (Number.isInteger(parseInt(this.form.lastName.charAt(0)))) {
       this.lastnameFailed = true;
       this.lastnameError = 'First Letter of lastname cannot contain digit';
-      // return false;
     } else {
       this.lastnameFailed = false;
     }
@@ -114,30 +111,17 @@ export class EditCustomerComponent implements OnInit {
     if (Number.isInteger(parseInt(this.form.city.charAt(0)))) {
       this.cityfailed = true;
       this.cityError = 'First Letter of city cannot contain digit';
-      // return false;
     } else {
       this.cityfailed = false;
     }
-    // if (!Number.isInteger(parseInt(this.form.phone))) {
-    //   this.phoneFailed = true;
-    //   this.phoneError = 'this field Should only contain Number';
-    //   // return false;
-    // } else {
-    //   this.phoneFailed = false;
-    //   // this.phoneFailed = true;
-    //   // this.phoneError = 'this field Should only contain Number';
-    // }
   }
 
   validatePhone() {
     if (!Number(this.form.phone)) {
       this.phoneFailed = true;
       this.phoneError = 'this field Should only contain Number';
-      // return false;
     } else {
       this.phoneFailed = false;
-      // this.phoneFailed = true;
-      // this.phoneError = 'this field Should only contain Number';
     }
   }
   isFormvalid() {

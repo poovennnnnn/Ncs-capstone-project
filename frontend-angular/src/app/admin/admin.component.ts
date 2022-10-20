@@ -8,18 +8,10 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-  str: string = '';
   active: string = '';
-  constructor(private userService: UserService) {}
+  constructor() {}
 
   ngOnInit(): void {}
-
-  // async handleClick() {
-  //   lastValueFrom(this.userService.forAdmin());
-  //   this.str = (await lastValueFrom(this.userService.forAdmin())) as string;
-  //   console.log(this.str);
-  // }
-
   createCustomer() {
     this.active = 'create';
   }

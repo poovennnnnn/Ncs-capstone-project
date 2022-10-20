@@ -15,7 +15,6 @@ import { RouterModule } from '@angular/router';
 import { AuthGuard } from './_auth/auth.guard';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
-import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AboutComponent } from './about/about.component';
@@ -28,6 +27,7 @@ import { CustomerComponent } from './customer-table/customer.component';
 import { OfferComponent } from './offer/offer.component';
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+import { SuccessResponseComponent } from './success-response/success-response.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +47,7 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
     OfferComponent,
     OfferDetailsComponent,
     EditCustomerComponent,
+    SuccessResponseComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +55,6 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
     FormsModule,
     HttpClientModule,
     RouterModule,
-    MaterialModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
     NgxPaginationModule,

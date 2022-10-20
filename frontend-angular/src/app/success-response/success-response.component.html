@@ -1,0 +1,65 @@
+<div class="container shadow-sm">
+  <h2 class="text-center display-5 text-secondary">Success Response</h2>
+  <div class="row pb-1" *ngIf="form">
+    <div class="col-10">
+      <div class="container offset-md-1">
+        <div class="row">
+          <div class="col border">
+            <table class="table table-borderless table-striped-columns">
+              <tbody>
+                <tr>
+                  <th class="display-6 text-secondary">Username</th>
+                  <td class="h4 table-success">{{ form?.username }}</td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">Password</th>
+                  <td class="h4 table-success">
+                    {{ form?.username + "@123" }}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">Account No</th>
+                  <td class="h4 table-success">{{ form?.actNumber }}</td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">First Name</th>
+                  <td class="h4 table-success">
+                    {{ form?.firstName }}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">Last Name</th>
+                  <td class="h4 table-success">
+                    {{ form?.lastName }}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">City</th>
+                  <td class="h4 table-success">
+                    {{ form?.city }}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">Phone</th>
+                  <td class="h4 table-success">
+                    {{ form?.phone }}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">Account Type</th>
+                  <td class="h4 table-success">{{ form?.actType }}</td>
+                </tr>
+                <tr>
+                  <th class="display-6 text-secondary">Account Balance</th>
+                  <td class="h4 table-success">
+                    <b>SGD </b>{{ form?.actBalance }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

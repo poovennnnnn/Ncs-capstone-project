@@ -61,10 +61,10 @@ public class UserRestController {
         System.out.println(user.getBankAccount());
 		
 		return ResponseEntity.ok(new UserResponse(token, "Token created Successfully..",user));
-//		return ResponseEntity.ok(new UserResponse(token, "Token created Successfully.."));
+
 	} 
 	
-	// after login only.  2nd request onwards
+
 	
 	@GetMapping("/welcome")
 	@PreAuthorize("hasRole('ADMIN')")
@@ -79,7 +79,6 @@ public class UserRestController {
 	}
 	
 	@GetMapping("/greet1")
-//	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<String> accessData3(Principal p) {
 		return ResponseEntity.ok("Role user => " + p.getName());
 	}

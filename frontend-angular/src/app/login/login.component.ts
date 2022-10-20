@@ -42,19 +42,13 @@ export class LoginComponent implements OnInit {
 
       throw new Error('Something went wrong');
     }
-    // console.log(Number.isInteger(parseInt(username.charAt(0))));
-
-    // if (Number.isInteger(parseInt(username.charAt(0)))) {
-    //   console.log('error');
-    //   this.errorMessage = 'First letter of username should not Contain digit';
-    //   this.isLoginFailed = true;
-    // }
 
     let response = (await lastValueFrom(
       this.userService.login(loginForm.value)
     ).catch((error) => {
       console.log(error);
       this.isLoginFailed = true;
+      this.errorMessage = 'Username or Password Incorrect';
     })) as any;
 
     console.log(response);
