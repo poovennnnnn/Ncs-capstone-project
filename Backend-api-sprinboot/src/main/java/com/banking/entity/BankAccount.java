@@ -24,28 +24,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BankAccount {
-    
-
+ 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-  
     @Column(name = "act_number",unique = true)
     private Integer actNumber;
-    
-    
+     
     @Column(name = "act_type",nullable = false)
     private String actType;
     
-
     @Column(name = "act_balance")
     private Double actBalance;
     
     @Column(name = "act_creation_date")
     private Date actCreationDate; 
     
-
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "cus_id")
     private Customer customer;

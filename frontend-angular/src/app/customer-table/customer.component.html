@@ -1,4 +1,4 @@
-<div class="container-fluid shadow">
+<div class="container shadow">
   <h1 class="text-center text-secondary display-5 mt-2">Account List</h1>
   <div class="row">
     <div class="form-group col-5">
@@ -12,58 +12,61 @@
   </div>
   <div class="row mt-2">
     <div class="col">
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr class="table-primary">
-            <th>Account no</th>
-            <th>First Name</th>
-            <th>Second Name</th>
-            <th>City</th>
-            <th>Phone</th>
-            <th>Account Type</th>
-            <th>Account Balance</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            *ngFor="
-              let account of filteredList
-                | paginate
-                  : {
-                      itemsPerPage: tableSize,
-                      currentPage: page,
-                      totalItems: count
-                    };
-              let i = index
-            "
-          >
-            <td scope="row">{{ account.actNumber }}</td>
-            <td>{{ account.customer?.firstName }}</td>
-            <td>{{ account.customer?.lastName }}</td>
-            <td>{{ account.customer?.city }}</td>
-            <td>{{ account.customer?.phone }}</td>
-            <td>{{ account.actType }}</td>
-            <td>$ {{ account.actBalance }}</td>
-            <td>
-              <i
-                class="btn btn-primary bi-pencil-square"
-                (click)="handleEdit(account!.id)"
-              >
-              </i>
-            </td>
-            <td>
-              <i
-                class="bi-trash btn btn-danger"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                (click)="bankId(account!.id)"
-              ></i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-wrapper">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr class="table-primary">
+              <th>Account no</th>
+              <th>First Name</th>
+              <th>Second Name</th>
+              <th>City</th>
+              <th>Phone</th>
+              <th>Account Type</th>
+              <th>Account Balance</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let account of filteredList
+                  | paginate
+                    : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };
+                let i = index
+              "
+            >
+              <td scope="row">{{ account.actNumber }}</td>
+              <td>{{ account.customer?.firstName }}</td>
+              <td>{{ account.customer?.lastName }}</td>
+              <td>{{ account.customer?.city }}</td>
+              <td>{{ account.customer?.phone }}</td>
+              <td>{{ account.actType }}</td>
+              <td>$ {{ account.actBalance }}</td>
+              <td>
+                <i
+                  class="btn btn-primary bi-pencil-square"
+                  (click)="handleEdit(account!.id)"
+                >
+                </i>
+              </td>
+              <td>
+                <i
+                  class="bi-trash btn btn-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  (click)="bankId(account!.id)"
+                ></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <div class="d-flex justify-content-center">
         <pagination-controls
           previousLabel="Prev"

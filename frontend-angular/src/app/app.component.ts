@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { BankAccountService } from './_services/bank-account.service';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +6,7 @@ import { BankAccountService } from './_services/bank-account.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'demo-ws3';
+  constructor() {}
 
-  constructor(private bankService: BankAccountService) {}
-
-  // ngOnInit() {
-
-  //   this.bankService.findById()
-  // }
+  ngOnInit() {}
 }

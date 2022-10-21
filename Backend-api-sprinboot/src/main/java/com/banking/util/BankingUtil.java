@@ -5,9 +5,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.banking.service.BankAccountService;
 
 
 @Component

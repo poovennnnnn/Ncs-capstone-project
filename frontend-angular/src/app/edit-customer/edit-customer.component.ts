@@ -119,7 +119,7 @@ export class EditCustomerComponent implements OnInit {
   validatePhone() {
     if (!Number(this.form.phone)) {
       this.phoneFailed = true;
-      this.phoneError = 'this field Should only contain Number';
+      this.phoneError = 'This Field Should only contain Number';
     } else {
       this.phoneFailed = false;
     }

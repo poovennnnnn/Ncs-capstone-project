@@ -39,10 +39,10 @@ public class BankAccountController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<BankAccount> create(@RequestBody UserRequest userRequest) throws AccountAlreadyExistsException {
 
-        if(bankService.existsByActNumber(userRequest.getActNumber())) {
-
-            throw new AccountAlreadyExistsException("Account Not Found ac.no: "+userRequest.getActNumber());
-        } 
+//        if(bankService.existsByActNumber(userRequest.getActNumber())) {
+//
+//            throw new AccountAlreadyExistsException("Account AlreadyExists ac.no: "+userRequest.getActNumber());
+//        } 
       return new ResponseEntity<BankAccount>(bankService.create(userRequest),HttpStatus.OK);
     }
 

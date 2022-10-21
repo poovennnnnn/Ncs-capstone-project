@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgToastService } from 'ng-angular-popup';
 import { lastValueFrom } from 'rxjs';
 import { BankAccount } from '../bank-account';
 import { BankAccountService } from '../_services/bank-account.service';

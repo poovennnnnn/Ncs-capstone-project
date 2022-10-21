@@ -55,7 +55,6 @@ protected void configureGlobal(AuthenticationManagerBuilder auth) throws Excepti
 @Override
 	protected void configure(HttpSecurity http) throws Exception {
 	System.out.println("http security...");
-		// TODO Auto-generated method stub
 	
 	http.cors();
 		http
@@ -69,10 +68,7 @@ protected void configureGlobal(AuthenticationManagerBuilder auth) throws Excepti
 		.and()
 		.sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-		//  verify user for 2nd request onwards
 		.and()
-		// the following line will register the filter mentioned and its functionality 
-		// is useful (or executed) 2nd request onwards 
 		.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
 }
 
