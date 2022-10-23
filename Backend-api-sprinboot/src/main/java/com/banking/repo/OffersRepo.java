@@ -9,4 +9,6 @@ import com.banking.entity.Offers;
 public interface OffersRepo extends JpaRepository<Offers, Integer> {
     
    boolean existsByCustomerIdAndOfferName(int id,String customer);
+   
+
 }

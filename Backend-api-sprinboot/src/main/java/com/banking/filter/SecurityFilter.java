@@ -31,16 +31,16 @@ public class SecurityFilter extends OncePerRequestFilter{
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
+	
+	
 	@Override
 	protected void doFilterInternal(
 			HttpServletRequest request, 
 			HttpServletResponse response, 
 			FilterChain filterChain)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		//1 read token from Auth header  from the rquest object
-	   
 		String token = request.getHeader("Authorization");
 		System.out.println(token);
 		  if (token != null && token.startsWith("Bearer ")) {
@@ -59,6 +59,7 @@ public class SecurityFilter extends OncePerRequestFilter{
 			// do validation. get the username from the jwt that this token belongs to
 			String username = jwtUtil.getUsername(token);
 			System.out.println("token username=" + username + " " + username.length());
+			
 			// username should not be empty and SecurityContext.getAuthentication() must be empty
 			if(username!=null &&
 					SecurityContextHolder.getContext().getAuthentication()==null) {
@@ -66,10 +67,10 @@ public class SecurityFilter extends OncePerRequestFilter{
 				// the username of the JWT token and the token username are same
 				// in otherwords, check if the datbase contains the username that belongs to the JWT token
 				UserDetails usr = userDetailsService.loadUserByUsername(username);	
-				System.out.println("usr.getauthorities = " + usr.getAuthorities());
-				System.out.println("usr username = "+ usr.getUsername());
 				// now if both usernames are same, i.e if the username exists in the database
 				// then check if the expiration time of the token for this token
+				
+				
 				boolean isTokenValid = jwtUtil.validateToken(token, usr.getUsername());		
 				System.out.println("is token valid = " + isTokenValid);
 				// if token is valid, then create the Authentication object andplace it inside the SecurituContext				

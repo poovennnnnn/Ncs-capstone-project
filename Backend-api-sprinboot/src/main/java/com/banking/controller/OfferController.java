@@ -82,6 +82,9 @@ public class OfferController {
 
         return new ResponseEntity<>(offerList,HttpStatus.OK);
     }
+    
+    
+    //For generating offers based on thier intial ammount ,creation date,Account balance 
 
     private Offers generateOffer(String str,BankAccount account) {
 

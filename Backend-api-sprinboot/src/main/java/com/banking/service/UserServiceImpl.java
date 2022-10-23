@@ -1,6 +1,6 @@
 package com.banking.service;
 
-import java.util.List;
+
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -45,18 +45,14 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
 		Optional<User> optionalUser = repo.findByUsername(username);
+		
+		// if user is not found throw exception
 		if (!optionalUser.isPresent()) 
-			throw new UsernameNotFoundException(username +" does not exist");
-		
+			throw new UsernameNotFoundException(username +" does not exist");	
 		User user = optionalUser.get();
-		
-		List<SimpleGrantedAuthority> list = user.getRole().stream()
-				.map(role->new SimpleGrantedAuthority(role.getRoleName()))
-				.collect(Collectors.toList());
-		System.out.println("ROLES =");
-		list.forEach(r->System.out.println(r));
+
+		//returning userdetailService Object
 		return new org.springframework.security.core.userdetails.User(
 				username,
 				user.getPassword(),

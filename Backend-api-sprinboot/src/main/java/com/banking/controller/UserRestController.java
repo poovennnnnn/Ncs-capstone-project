@@ -41,7 +41,6 @@ public class UserRestController {
 		System.out.println("user = " + user);
 		User newUser= service.saveUser(user);
 		
-		//return new ResponseEntity<String>(body,HttpStatus.OK);
 		return ResponseEntity.ok(newUser);
 		 
 	}
