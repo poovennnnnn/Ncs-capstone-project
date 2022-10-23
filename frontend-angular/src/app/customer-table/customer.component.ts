@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
-import { BankAccount } from '../bank-account';
+import { BankAccount } from '../model/bank-account';
+
 import { BankAccountService } from '../_services/bank-account.service';
 
 @Component({

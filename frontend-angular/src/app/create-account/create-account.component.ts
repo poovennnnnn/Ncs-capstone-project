@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
-import { BankAccount } from '../bank-account';
+import { BankAccount } from '../model/bank-account';
+
 import { BankAccountService } from '../_services/bank-account.service';
 import { DataServiceService } from '../_services/data-service.service';
 

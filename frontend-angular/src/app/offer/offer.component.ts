@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
-import { BankAccount } from '../bank-account';
-import { Offers } from '../offers';
+import { BankAccount } from '../model/bank-account';
+import { Offers } from '../model/offers';
+
 import { BankAccountService } from '../_services/bank-account.service';
 import { DataServiceService } from '../_services/data-service.service';
 import { UserAuthService } from '../_services/user-auth.service';
@@ -17,7 +18,7 @@ export class OfferComponent implements OnInit {
   creditCard?: Offers;
   homeLoan?: Offers;
   carLoan?: Offers;
-  // isButtonClicked: boolean = false;
+
   active: string = '';
   name: string = '';
 
@@ -61,28 +62,7 @@ export class OfferComponent implements OnInit {
   }
 
   handleCreditCard(offer: Offers) {
-    // this.active = 'CREDITCARD';
-    // this.name = 'CREDIT CARD OFFER';
-    // this.flag = false;
     this.dataService.setOffer(offer);
     this.router.navigate(['user/offer/details']);
   }
-  // handleHomeLoan() {
-  //   this.active = 'HOMELOAN';
-  //   this.name = 'HOME LOAN';
-  //   this.flag = false;
-  // }
-
-  // handleCarLoan() {
-  //   this.active = 'CARLOAN';
-  //   this.name = 'CAR LOAN';
-  //   this.flag = false;
-  // }
-
-  // changeFlag(input: boolean) {
-  //   this.flag = input;
-  //   this.active = '';
-  //   console.log(this.flag);
-  //   this.ngOnInit();
-  // }
 }

@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
-import { Offers } from '../offers';
+import { Offers } from '../model/offers';
+
 import { BankAccountService } from '../_services/bank-account.service';
 import { DataServiceService } from '../_services/data-service.service';
 import { UserAuthService } from '../_services/user-auth.service';

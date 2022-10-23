@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
-import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-admin',
